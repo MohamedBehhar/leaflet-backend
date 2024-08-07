@@ -17,7 +17,7 @@ const io = socketIo(server, {
 app.use(cors());
 
 const incrementLocation = (long, lat) => {
-	const increment = 0.0002;
+	const increment = 0.0001;
 	return {
 		long: long + increment,
 		lat: lat + increment,
@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
 		const interval = setInterval(() => {
 			location = incrementLocation(location.long, location.lat);
 			io.emit('location-update', location);
-		}, 1000);
+		}, 500);
 
 		socket.on('disconnect', () => {
 			clearInterval(interval);
