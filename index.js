@@ -36,10 +36,11 @@ io.on('connection', (socket) => {
 			io.emit('location-update', location);
 		}, 500);
 
-		socket.on('disconnect', () => {
+		socket.on('stop-moving', () => {
 			clearInterval(interval);
 		});
 	});
+
 });
 
 server.listen(3000, () => {
