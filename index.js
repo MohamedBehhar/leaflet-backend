@@ -39,6 +39,11 @@ io.on('connection', (socket) => {
 		socket.on('disconnect', () => {
 			clearInterval(interval);
 		});
+
+		socket.on('stop-moving', () => {
+			console.log('Stop moving');
+			clearInterval(interval);
+		});
 	});
 	socket.on('stop-moving', () => {
 		console.log('Stop moving');
