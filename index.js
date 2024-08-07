@@ -30,11 +30,7 @@ io.on('connection', (socket) => {
 	socket.on('disconnect', () => {
 		console.log('User disconnected');
 	});
-
-
-
 	socket.on('start-moving', (location) => {
-		console.log('start-moving', location);
 		const interval = setInterval(() => {
 			location = incrementLocation(location.long, location.lat);
 			io.emit('location-update', location);
@@ -43,10 +39,6 @@ io.on('connection', (socket) => {
 		socket.on('disconnect', () => {
 			clearInterval(interval);
 		});
-	});
-
-	socket.on('chat message', (msg) => {
-		io.emit('chat message', msg);
 	});
 });
 
